@@ -5,9 +5,9 @@ def test_run():
     df = pd.read_csv("Data/HCP.csv")
 
     #Three ways to print Data from the file
-    #print(df.tail(n=10)) #Last 10 lines
-    #print(df.head())     #First 5 lines
-    #print(df)            #Whole File
+    print(df.tail(n=10)) #Last 10 lines
+    print(df.head())     #First 5 lines
+    print(df)            #Whole File
 
     print(df[5:10])        #Slice from 5-9
 
@@ -36,4 +36,3 @@ if __name__ == "__main__":
     #test_run_close()
     test_run_matlib()
 
-    #compute 0:27ls
