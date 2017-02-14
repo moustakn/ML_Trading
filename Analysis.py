@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -56,13 +57,20 @@ def date_range():
     '''This for loops reads data from each symbols csv file and joins it to the SPY df'''
     symbols = ['APPL','HCP','IBM']
     for symbol in symbols:
-        df_temp = pd.read_csv("Data/{}.csv".format(symbol), index_col='Date',parse_dates=True,
+        df_temp = pd.read_csv(symbol_to_path(symbol), index_col='Date',parse_dates=True,
                             usecols=['Date','Adj Close'], na_values=['NaN'])
+
+                                #Note I used symbol_to_path to get the symbol related to the path
+                                #Instead of doing read_csv(/"Data/{}.csv/".format(symbol))
 
         df_temp = df_temp.rename(columns={'Adj Close':symbol})
         df1 = df1.join(df_temp)
 
     print(df1)
+
+def symbol_to_path(symbol, base_dir="Data"):
+    """Return CSV file path given ticker symbol."""
+    return os.path.join(base_dir, "{}.csv".format(str(symbol)))
 
 
 if __name__ == "__main__":
