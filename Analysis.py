@@ -15,7 +15,7 @@ def read_data():
 
 
 def get_max_close(symbol):
-    '''Return the maxium closign value for a stock indicated by symbol'''
+    '''Return the maxium closing value for a stock indicated by symbol'''
 
     df = pd.read_csv("Data/{}.csv".format(symbol))  #Reads in data and accepts an arg to determine which file
     return df['Close'].max()                        #Compute and return max from close column
