@@ -31,6 +31,9 @@ def get_data(symbols, dates):
 
     return df
 
+def normalized_data(df):
+    """Normalize stock prices using the first row of the dataframe"""
+    return df/ df.ix[0,:]
 
 def plot_data(df, title="Stock prices"):
     """Plot stock prices with a custom title and meaningful axis labels."""
@@ -50,8 +53,8 @@ def test_run():
     # Get stock data
     df = get_data(symbols, dates)
 
-    # Slice and plot
-    plot_selected(df, ['SPY', 'IBM'], '2017-01-15', '2017-02-01')
+    # Normalize, Slice, and plot
+    plot_selected(normalized_data(df), ['SPY','IBM','APPL'], '2017-01-15', '2017-02-01')
 
 
 if __name__ == "__main__":
